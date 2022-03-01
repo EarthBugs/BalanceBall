@@ -12,8 +12,6 @@ public class CameraFollow : MonoBehaviour
     public float speed = 1f;
     //摄像机偏移量
     Vector3 offset = new Vector3(0, 3, -6);
-    //注视跟随速度（注视灵敏度）
-    public float lookAtSpeed = 1.0f;
 
     // Start is called before the first frame update
     void Start()
