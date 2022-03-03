@@ -11,13 +11,15 @@ public class Fan : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
 	{
-		ball = GameObject.Find("MainNode").GetComponent<MainLogic>().ball;
+
 	}
 
 
 	// Update is called once per frame
 	void Update()
 	{
+		ball = GameObject.Find("MainNode").GetComponent<MainLogic>().ball;
+		//ÉÈÒ¶Ðý×ª
 		GetComponentsInChildren<Transform>()[1].transform.Rotate(0, spinSpeed * Time.deltaTime, 0);
 	}
 

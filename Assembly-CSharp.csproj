@@ -54,9 +54,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\MainLogic.cs" />
+    <Compile Include="Assets\Scripts\Fan.cs" />
     <Compile Include="Assets\Scripts\AddForces.cs" />
     <Compile Include="Assets\Scripts\CameraFollow.cs" />
-    <Compile Include="Assets\Scripts\Fan.cs" />
+    <Compile Include="Assets\Scripts\WoodenConvertor.cs" />
+    <Compile Include="Assets\Scripts\PaperConvertor.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

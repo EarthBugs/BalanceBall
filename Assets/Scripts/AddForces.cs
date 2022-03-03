@@ -6,6 +6,8 @@ public class AddForces : MonoBehaviour
 {
 	//摄像机
 	GameObject mainCamera;
+	//正在使用的球
+	GameObject ball;
 	//刚体组件
 	Rigidbody rigidbody;
 	//是否被风扇影响
@@ -16,13 +18,14 @@ public class AddForces : MonoBehaviour
 	{
 		//初始化摄像机
 		mainCamera = GameObject.Find("Main Camera");
-		//初始化RigidBody
-		rigidbody = this.gameObject.GetComponent(typeof(Rigidbody)) as Rigidbody;
-		rigidbody.interpolation = RigidbodyInterpolation.Interpolate;
 	}
 
 	void FixedUpdate()
 	{
+		//初始化RigidBody
+		rigidbody = GameObject.Find("MainNode").GetComponent<MainLogic>().ball.GetComponent<Rigidbody>();
+		rigidbody.interpolation = RigidbodyInterpolation.Interpolate;
+
 		//获取摄像机方向
 		int camDirection = mainCamera.GetComponent<CameraFollow>().camDirection;
 
@@ -32,19 +35,19 @@ public class AddForces : MonoBehaviour
 		{
 			if(camDirection == 0)
 			{
-				addForceNorth();
+				AddForceNorth();
 			}
 			if (camDirection == 1)
 			{
-				addForceEast();
+				AddForceEast();
 			}
 			if (camDirection == 2)
 			{
-				addForceSouth();
+				AddForceSouth();
 			}
 			if (camDirection == 3)
 			{
-				addForceWest();
+				AddForceWest();
 			}
 		}
 		if (Input.GetKey("a") || Input.GetKey(KeyCode.LeftArrow))
@@ -52,19 +55,19 @@ public class AddForces : MonoBehaviour
 
 			if (camDirection == 0)
 			{
-				addForceWest();
+				AddForceWest();
 			}
 			if (camDirection == 1)
 			{
-				addForceNorth();
+				AddForceNorth();
 			}
 			if (camDirection == 2)
 			{
-				addForceEast();
+				AddForceEast();
 			}
 			if (camDirection == 3)
 			{
-				addForceSouth();
+				AddForceSouth();
 			}
 		}
 		if (Input.GetKey("s") || Input.GetKey(KeyCode.DownArrow))
@@ -72,19 +75,19 @@ public class AddForces : MonoBehaviour
 
 			if (camDirection == 0)
 			{
-				addForceSouth();
+				AddForceSouth();
 			}
 			if (camDirection == 1)
 			{
-				addForceWest();
+				AddForceWest();
 			}
 			if (camDirection == 2)
 			{
-				addForceNorth();
+				AddForceNorth();
 			}
 			if (camDirection == 3)
 			{
-				addForceEast();
+				AddForceEast();
 			}
 		}
 		if (Input.GetKey("d") || Input.GetKey(KeyCode.RightArrow))
@@ -92,19 +95,19 @@ public class AddForces : MonoBehaviour
 
 			if (camDirection == 0)
 			{
-				addForceEast();
+				AddForceEast();
 			}
 			if (camDirection == 1)
 			{
-				addForceSouth();
+				AddForceSouth();
 			}
 			if (camDirection == 2)
 			{
-				addForceWest();
+				AddForceWest();
 			}
 			if (camDirection == 3)
 			{
-				addForceNorth();
+				AddForceNorth();
 			}
 		}
 
@@ -112,36 +115,35 @@ public class AddForces : MonoBehaviour
 		if(fanAffected && rigidbody.velocity.magnitude <= 5)
 		{
 			rigidbody.AddForce(0, 150, 0);
-			//Debug.Log("Fan affected.");
 		}
 	}
 
-	void addForceNorth()
+	void AddForceNorth()
 	{
-		if (rigidbody.velocity.magnitude <= 50)
+		if (rigidbody.velocity.x <= 5)
 		{
 			rigidbody.AddForce(0, 0, 100);
 		}
 	}
 
-	void addForceWest()
+	void AddForceWest()
 	{
-		if (rigidbody.velocity.magnitude <= 50)
+		if (rigidbody.velocity.x >= -5)
 		{
 			rigidbody.AddForce(-100, 0, 0);
 		}
 	}
 
-	void addForceSouth()
+	void AddForceSouth()
 	{
-		if (rigidbody.velocity.magnitude <= 50)
+		if (rigidbody.velocity.magnitude >= -5)
 		{
 			rigidbody.AddForce(0, 0, -100);
 		}
 	}
-	void addForceEast()
+	void AddForceEast()
 	{
-		if (rigidbody.velocity.magnitude <= 50)
+		if (rigidbody.velocity.x <= 5)
 		{
 			rigidbody.AddForce(100, 0, 0);
 		}

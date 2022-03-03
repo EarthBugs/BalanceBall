@@ -5,7 +5,7 @@ using UnityEngine;
 public class CameraFollow : MonoBehaviour
 {
     //跟随目标
-    GameObject followTarget;
+    public GameObject ball;
     //存储摄像机指向，0=南，1=西，2=北，3=东
     public int camDirection = 0;
     //跟随速度（灵敏度）
@@ -16,15 +16,17 @@ public class CameraFollow : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        followTarget = GameObject.Find("MainNode").GetComponent<MainLogic>().ball;
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        ball = GameObject.Find("MainNode").GetComponent<MainLogic>().ball;
+        
         //摄像机平滑跟随
         this.transform.position = Vector3.Lerp(this.transform.position,
-            followTarget.transform.position + offset, Time.deltaTime * speed);
+            ball.transform.position + offset, Time.deltaTime * speed);
         rotateCam();
         camLookAt();
     }
@@ -87,6 +89,11 @@ public class CameraFollow : MonoBehaviour
     void camLookAt()
     {
         //摄像机跟随
-        this.transform.LookAt(followTarget.transform.position);
+        this.transform.LookAt(ball.transform.position);
+    }
+
+    void ChangeBall(GameObject ballToChange)
+    {
+        ball = ballToChange;
     }
 }

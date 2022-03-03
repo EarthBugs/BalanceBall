@@ -20,6 +20,12 @@ public class MainLogic : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        Rigidbody rigidbody = ball.GetComponent<Rigidbody>();
+        Debug.Log(rigidbody.velocity + "       " + rigidbody.velocity.magnitude);
+    }
+
+    public void SetBall(GameObject ballToChange)
+    {
+        ball = ballToChange;
     }
 }
