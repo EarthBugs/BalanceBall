@@ -42,20 +42,23 @@ public class WoodenConvertor : MonoBehaviour
 
 		//工作开始关盖
 		if (state == 1 && (lid0.localScale.x <= 0.99 || lid1.localScale.x <= 0.99))
-        {
+		{
+			//禁止用户输入
+			GameObject.Find("Balls").GetComponent<AddForces>().canMove = false;
+
 			CloseLid();
 		}
 		//工作计时器开始计时
 		if (state == 1)
-        {
+		{
 			workTimer -= Time.deltaTime;
-        }
+		}
 		//工作计时器计时结束
 		if (state == 1 && workTimer <= 0)
 		{
 			Convert();
 			state = 2;
-        }
+		}
 		//工作结束开盖
 		if (state == 2)
 		{
@@ -67,43 +70,50 @@ public class WoodenConvertor : MonoBehaviour
 		}
 		//底部上升
 		if (state == 3)
-        {
+		{
 			BottomRise();
-			if(bottom.localPosition.y >= 0.44)
-            {
+			if (bottom.localPosition.y >= 0.44)
+			{
 				state = 4;
 				cdTimer = cdTime;
 			}
-        }
+		}
 		//cd开始关盖
 		if (state == 4)
 		{
 			CloseLid();
+			if (lid0.localScale.x >= 0.99 && lid1.localScale.x >= 0.99)
+			{
+				//允许用户输入
+				GameObject.Find("Balls").GetComponent<AddForces>().canMove = true;
+
+				state = 5;
+			}
 		}
 		//cd计时器开始计时
-		if (state == 4)
-        {
+		if (state == 5)
+		{
 			cdTimer -= Time.deltaTime;
-        }
+		}
 		//cd计时器计时结束
-		if (state == 4 && cdTimer <= 0)
-        {
+		if (state == 5 && cdTimer <= 0)
+		{
 			BottomDrop();
-			if(bottom.localPosition.y <= -0.55f)
-            {
-				state = 5;
-            }
+			if (bottom.localPosition.y <= -0.55f)
+			{
+				state = 6;
+			}
 		}
 		//cd结束开盖
-		if (state == 5)
-        {
+		if (state == 6)
+		{
 			OpenLid();
 			if (lid0.localScale.x <= 0.01 && lid1.localScale.x <= 0.01)
 			{
 				state = 0;
 			}
 		}
-    }
+	}
 
 	private void OnTriggerEnter(Collider other)
 	{

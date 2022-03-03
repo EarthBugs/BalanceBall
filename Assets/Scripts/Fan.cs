@@ -18,7 +18,6 @@ public class Fan : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		ball = GameObject.Find("MainNode").GetComponent<MainLogic>().ball;
 		//扇叶旋转
 		GetComponentsInChildren<Transform>()[1].transform.Rotate(0, spinSpeed * Time.deltaTime, 0);
 	}
@@ -26,6 +25,7 @@ public class Fan : MonoBehaviour
 	//进入范围时，设置信号
 	void OnTriggerEnter(Collider other)
 	{
+		ball = GameObject.Find("MainNode").GetComponent<MainLogic>().ball;
 		if (ball.name != "PaperBall")
 		{
 			ball.GetComponent<AddForces>().fanAffected = true;
@@ -35,6 +35,7 @@ public class Fan : MonoBehaviour
 	//离开范围时，设置信号
 	private void OnTriggerExit(Collider other)
 	{
+		ball = GameObject.Find("MainNode").GetComponent<MainLogic>().ball;
 		ball.GetComponent<AddForces>().fanAffected = false;
 	}
 }
