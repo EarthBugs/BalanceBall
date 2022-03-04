@@ -13,7 +13,8 @@ public class MainLogic : MonoBehaviour
 	void Start()
 	{
 		Application.targetFrameRate = frameRate;
-		//禁用除选中球外的球
+
+		//启用选中的球，禁用除选中球外的球
 		Transform[] transforms = GameObject.Find("Balls").GetComponentsInChildren<Transform>();
 		foreach (var balls in transforms)
 			if (balls.name != this.ball.name && balls.name != "Balls")
@@ -21,6 +22,8 @@ public class MainLogic : MonoBehaviour
 				Debug.Log(balls.name);
 				balls.gameObject.SetActive(false);
 			}
+			else if (balls.name == this.ball.name)
+				balls.gameObject.SetActive(true);
 	}
 
 	// Update is called once per frame

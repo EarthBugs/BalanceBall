@@ -17,8 +17,10 @@ public class AddForces : MonoBehaviour
 	public bool fanAffected;
 	//限速
 	public float maxSpeed = 5.0f;
-	//为球施加力的功率
-	public float power = 50.0f;
+	//为球施加的力（预设）
+	public float preSetForce = 100.0f;
+	//实际添加的力
+	float force;
 	//是否允许移动
 	public bool canMove = true;
 
@@ -54,6 +56,13 @@ public class AddForces : MonoBehaviour
 		//判断是否禁止移动
 		if (canMove)
         {
+			force = preSetForce;
+			//精确控制模式
+			if (Input.GetKey(KeyCode.LeftShift))
+            {
+				force = preSetForce * 0.5f;
+			}
+
 			//移动控制
 			//camDirection：摄像机指向，0=南，1=西，2=北，3=东
 			if (Input.GetKey("w") || Input.GetKey(KeyCode.UpArrow))
@@ -147,7 +156,7 @@ public class AddForces : MonoBehaviour
 					Debug.Log(yDistance);
 					Debug.Log(Math.Sin(Time.time) * 20);
 
-                    rigidbody.AddForce(0, power / (yDistance * 1.2f), 0);
+                    rigidbody.AddForce(0, force / (yDistance * 1.2f), 0);
 
                     //降低向下速度，防止浮动
                     if (rigidbody.velocity.y < 0 && yDistance <= 5)
@@ -156,12 +165,12 @@ public class AddForces : MonoBehaviour
                     }
 					//添加小浮动
 					rigidbody.AddForce(0, (float)Math.Sin(Time.time * 5) * 20, 0);
-					
-     //               //向内吸力，防止飘出范围
-     //               Vector3 xzDistance = rigidbody.velocity;
-     //               xzDistance = fan.position - ball.transform.position;
-					//xzDistance.y = 0;
-					//rigidbody.AddForce(xzDistance * 0.5f);
+
+                    //向内吸力，防止飘出范围
+                    Vector3 xzDistance = rigidbody.velocity;
+                    xzDistance = fan.position - ball.transform.position;
+                    xzDistance.y = 0;
+                    rigidbody.AddForce(xzDistance * 0.5f);
                 }
 			}
 		}
@@ -169,19 +178,19 @@ public class AddForces : MonoBehaviour
 
 	void AddForceNorth()
 	{
-		rigidbody.AddForce(0, 0, power);
+		rigidbody.AddForce(0, 0, force);
 	}
 	void AddForceWest()
 	{
-		rigidbody.AddForce(-power, 0, 0);
+		rigidbody.AddForce(-force, 0, 0);
 	}
 	void AddForceSouth()
 	{
-		rigidbody.AddForce(0, 0, -power);
+		rigidbody.AddForce(0, 0, -force);
 	}
 	void AddForceEast()
 	{
-		rigidbody.AddForce(power, 0, 0);
+		rigidbody.AddForce(force, 0, 0);
 	}
 
 	public void FanAffected(Transform fan)
