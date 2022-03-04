@@ -174,7 +174,7 @@ public class PaperConvertor : MonoBehaviour
 		//球更新为新球
 		ball = GameObject.Find("Balls").transform.Find("PaperBall").gameObject;
 		//更改MainLogic的球
-		GameObject.Find("MainNode").GetComponent<MainLogic>().ball = ball;
+		GameObject.Find("MainNode").GetComponent<MainLogic>().SetBall(ball);
 		//更改新球位置
 		ball.transform.position = lastPosition;
 		//新球设为可见

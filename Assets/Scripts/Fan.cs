@@ -22,20 +22,15 @@ public class Fan : MonoBehaviour
 		GetComponentsInChildren<Transform>()[1].transform.Rotate(0, spinSpeed * Time.deltaTime, 0);
 	}
 
-	//进入范围时，设置信号
+	//进入范围时，设置状态
 	void OnTriggerEnter(Collider other)
 	{
-		ball = GameObject.Find("MainNode").GetComponent<MainLogic>().ball;
-		if (ball.name != "PaperBall")
-		{
-			ball.GetComponent<AddForces>().fanAffected = true;
-		}
+		GameObject.Find("Balls").GetComponent<AddForces>().FanAffected(this.transform);
 	}
 
-	//离开范围时，设置信号
+	//离开范围时，设置状态
 	private void OnTriggerExit(Collider other)
 	{
-		ball = GameObject.Find("MainNode").GetComponent<MainLogic>().ball;
-		ball.GetComponent<AddForces>().fanAffected = false;
+		GameObject.Find("Balls").GetComponent<AddForces>().FanDisAffected(this.transform);
 	}
 }

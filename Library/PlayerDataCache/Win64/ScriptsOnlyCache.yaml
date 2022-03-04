@@ -3,7 +3,10 @@ ScriptsOnlyBuild:
     Assembly-CSharp.dll:
     - AddForces
     - CameraFollow
+    - Fan
     - MainLogic
+    - PaperConvertor
+    - WoodenConvertor
     Unity.Rider.Editor.dll:
     - Packages.Rider.Editor.UnitTesting.CallbackData
     UnityEditor.Graphs.dll:
@@ -40,6 +43,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 64
       Script: {instanceID: 0}
+    - Class: 65
+      Script: {instanceID: 0}
     - Class: 81
       Script: {instanceID: 0}
     - Class: 89
@@ -53,7 +58,13 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 2512}
     - Class: 114
-      Script: {instanceID: 3096}
+      Script: {instanceID: 2514}
+    - Class: 114
+      Script: {instanceID: 3098}
+    - Class: 114
+      Script: {instanceID: 3860}
+    - Class: 114
+      Script: {instanceID: 4174}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 134
@@ -211,7 +222,13 @@ ScriptsOnlyBuild:
     className: TextMeshProUGUI
   - hash:
       serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+      Hash: 56b7c3c9fd8826fc8821a7e02aef4501
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Fan
+  - hash:
+      serializedVersion: 2
+      Hash: 7e2730e3486da45a9b6ee7f4455c8efb
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: AddForces
@@ -325,7 +342,7 @@ ScriptsOnlyBuild:
     className: VerticalLayoutGroup
   - hash:
       serializedVersion: 2
-      Hash: accc52a1f11fd66d249eecf1ba56d87c
+      Hash: a175492b143d9bd6c8ec6dd36242d570
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: CameraFollow
@@ -463,6 +480,12 @@ ScriptsOnlyBuild:
     className: TMP_Settings
   - hash:
       serializedVersion: 2
+      Hash: 97c1bc93462e32f94d9444682b4bbab3
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: PaperConvertor
+  - hash:
+      serializedVersion: 2
       Hash: 6980e81ddc615a861309d2d659cc3760
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
@@ -479,6 +502,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TMP_ScrollbarEventHandler
+  - hash:
+      serializedVersion: 2
+      Hash: 0064b73f8bc2ad72c1152ad2e02c7fcc
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: WoodenConvertor
   - hash:
       serializedVersion: 2
       Hash: 8220b46879dc5e37db1b940c938f5744

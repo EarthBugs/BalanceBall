@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class AddForces : MonoBehaviour
 {
@@ -10,13 +11,15 @@ public class AddForces : MonoBehaviour
 	GameObject ball;
 	//刚体组件
 	Rigidbody rigidbody;
+	//正在影响的风扇
+	Transform fan;
 	//是否被风扇影响
 	public bool fanAffected;
 	//限速
 	public float maxSpeed = 5.0f;
 	//为球施加力的功率
 	public float power = 50.0f;
-	//是否禁止输入
+	//是否允许移动
 	public bool canMove = true;
 
 	// Start is called before the first frame update
@@ -28,6 +31,9 @@ public class AddForces : MonoBehaviour
 
 	void FixedUpdate()
 	{
+		//初始化球
+		ball = GameObject.Find("MainNode").GetComponent<MainLogic>().ball;
+
 		//初始化RigidBody
 		rigidbody = GameObject.Find("MainNode").GetComponent<MainLogic>().ball.GetComponent<Rigidbody>();
 		rigidbody.interpolation = RigidbodyInterpolation.Interpolate;
@@ -45,7 +51,7 @@ public class AddForces : MonoBehaviour
 		//获取摄像机方向
 		int camDirection = mainCamera.GetComponent<CameraFollow>().camDirection;
 
-		//判断是否禁止输入
+		//判断是否禁止移动
 		if (canMove)
         {
 			//移动控制
@@ -130,11 +136,33 @@ public class AddForces : MonoBehaviour
 				}
 			}
 
+
 			//风扇升力
 			if (fanAffected)
 			{
-				Debug.Log("1");
-				rigidbody.AddForce(0, 10, 0);
+				//升力
+				float yDistance = ball.transform.position.y - fan.position.y;
+				if (yDistance > 0 && ball.name == "PaperBall")
+				{
+					Debug.Log(yDistance);
+					Debug.Log(Math.Sin(Time.time) * 20);
+
+                    rigidbody.AddForce(0, power / (yDistance * 1.2f), 0);
+
+                    //降低向下速度，防止浮动
+                    if (rigidbody.velocity.y < 0 && yDistance <= 5)
+                    {
+                        rigidbody.AddForce(0, 20, 0);
+                    }
+					//添加小浮动
+					rigidbody.AddForce(0, (float)Math.Sin(Time.time * 5) * 20, 0);
+					
+     //               //向内吸力，防止飘出范围
+     //               Vector3 xzDistance = rigidbody.velocity;
+     //               xzDistance = fan.position - ball.transform.position;
+					//xzDistance.y = 0;
+					//rigidbody.AddForce(xzDistance * 0.5f);
+                }
 			}
 		}
 	}
@@ -156,40 +184,20 @@ public class AddForces : MonoBehaviour
 		rigidbody.AddForce(power, 0, 0);
 	}
 
-	//void AddForceNorth()
-	//{
-	//	float speed = rigidbody.velocity.magnitude;
-	//	if (speed == 0)
-	//		rigidbody.AddForce(0, 0, power);
-	//	else
-	//		rigidbody.AddForce(0, 0, power / speed);
-	//}
+	public void FanAffected(Transform fan)
+    {
+		fanAffected = true;
+		this.fan = fan;
 
-	//void AddForceWest()
-	//{
-	//	float speed = rigidbody.velocity.magnitude;
-	//	if (speed == 0)
-	//		rigidbody.AddForce(-power, 0, 0);
-	//	else
-	//		rigidbody.AddForce(-(power / speed), 0, 0);
-	//}
+		//增加阻力，优化操作手感
+		rigidbody.drag += 0.1f;
+	}
+	public void FanDisAffected(Transform fan)
+	{
+		fanAffected = false;
+		this.fan = fan;
 
-	//void AddForceSouth()
-	//{
-	//	float speed = rigidbody.velocity.magnitude;
-	//	if (speed == 0)
-	//       {
-	//           rigidbody.AddForce(0, 0, -power);
-	//       }
-	//       else
-	//           rigidbody.AddForce(0, 0, -(power / speed));
-	//}
-	//void AddForceEast()
-	//{
-	//	float speed = rigidbody.velocity.magnitude;
-	//	if (speed == 0)
-	//		rigidbody.AddForce(power, 0, 0);
-	//	else
-	//		rigidbody.AddForce(power / speed, 0, 0);
-	//}
+		//阻力恢复成最初值
+		rigidbody.drag -= 0.1f;
+	}
 }

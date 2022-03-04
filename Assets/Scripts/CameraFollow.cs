@@ -43,19 +43,19 @@ public class CameraFollow : MonoBehaviour
             //修改offset，0=南，1=西，2=北，3=东
             if (camDirection == 0)
             {
-                offset = new Vector3(0, 3, -6);
+                offset = new Vector3(0, 5, -6);
             }
             else if (camDirection == 1)
             {
-                offset = new Vector3(-6, 3, 0);
+                offset = new Vector3(-6, 5, 0);
             }
             else if (camDirection == 2)
             {
-                offset = new Vector3(0, 3, 6);
+                offset = new Vector3(0, 5, 6);
             }
             else if (camDirection == 3)
             {
-                offset = new Vector3(6, 3, 0);
+                offset = new Vector3(6, 5, 0);
             }
         }
         //逆时针旋转
@@ -68,19 +68,19 @@ public class CameraFollow : MonoBehaviour
             //修改offset，0=南，1=西，2=北，3=东
             if (camDirection == 0)
             {
-                offset = new Vector3(0, 3, -6);
+                offset = new Vector3(0, 5, -6);
             }
             else if (camDirection == 1)
             {
-                offset = new Vector3(-6, 3, 0);
+                offset = new Vector3(-6, 5, 0);
             }
             else if (camDirection == 2)
             {
-                offset = new Vector3(0, 3, 6);
+                offset = new Vector3(0, 5, 6);
             }
             else if (camDirection == 3)
             {
-                offset = new Vector3(6, 3, 0);
+                offset = new Vector3(6, 5, 0);
             }
         }
     }

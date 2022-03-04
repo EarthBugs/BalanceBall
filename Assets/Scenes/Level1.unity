@@ -152,7 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3701e7b4efd0e32468716908bb03a298, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ball: {fileID: 2042607966}
+  ball: {fileID: 273105250}
   frameRate: 60
 --- !u!4 &233707971
 Transform:
@@ -1404,7 +1404,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 87acaefb75c3c81448713ee9bf441c3d, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 87acaefb75c3c81448713ee9bf441c3d, type: 3}
