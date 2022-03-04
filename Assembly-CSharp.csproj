@@ -59,6 +59,7 @@
     <Compile Include="Assets\Scripts\CameraFollow.cs" />
     <Compile Include="Assets\Scripts\PaperConvertor.cs" />
     <Compile Include="Assets\Scripts\WoodenConvertor.cs" />
+    <Compile Include="Assets\Scripts\BridgeCollider.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

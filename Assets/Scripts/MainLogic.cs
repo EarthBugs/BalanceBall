@@ -19,7 +19,6 @@ public class MainLogic : MonoBehaviour
 		foreach (var balls in transforms)
 			if (balls.name != this.ball.name && balls.name != "Balls")
 			{
-				Debug.Log(balls.name);
 				balls.gameObject.SetActive(false);
 			}
 			else if (balls.name == this.ball.name)
