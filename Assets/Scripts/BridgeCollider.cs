@@ -26,7 +26,7 @@ public class BridgeCollider : MonoBehaviour
             dropTimer += Time.deltaTime;
 
             //此物体（碰撞箱）开始向桥移动
-            this.transform.position += new Vector3(10 * Time.deltaTime, 0, 0);
+            this.transform.position += new Vector3(5 * Time.deltaTime, 0, 0);
             //当延时计时器达到时间，从队列头取出物体，打开该物体重力影响
             if (dropTimer >= 0.5 && dropQueue.Count > 0)
                 dropQueue.Dequeue().GetComponent<Rigidbody>().useGravity = true;

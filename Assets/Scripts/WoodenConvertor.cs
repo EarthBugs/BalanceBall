@@ -148,6 +148,7 @@ public class WoodenConvertor : MonoBehaviour
 			state = 1;
 			workTimer = duration;
 			ball = GameObject.Find("MainNode").GetComponent<MainLogic>().ball;
+			dropObject = other.transform.gameObject;
 		}
 	}
 
