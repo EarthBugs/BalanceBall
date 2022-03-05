@@ -145,23 +145,16 @@ public class AddForces : MonoBehaviour
 				if (yDistance > 0 && ball.name == "PaperBall")
 				{
 					Debug.Log(yDistance);
-					Debug.Log(Math.Sin(Time.time) * 20);
 
-                    rigidbody.AddForce(0, power / (yDistance * 1.2f), 0);
+                    rigidbody.AddForce(0, power / yDistance, 0);
 
                     //降低向下速度，防止浮动
-                    if (rigidbody.velocity.y < 0 && yDistance <= 5)
+                    if (rigidbody.velocity.y < 0 && yDistance <= 7)
                     {
                         rigidbody.AddForce(0, 20, 0);
                     }
 					//添加小浮动
 					rigidbody.AddForce(0, (float)Math.Sin(Time.time * 5) * 20, 0);
-					
-     //               //向内吸力，防止飘出范围
-     //               Vector3 xzDistance = rigidbody.velocity;
-     //               xzDistance = fan.position - ball.transform.position;
-					//xzDistance.y = 0;
-					//rigidbody.AddForce(xzDistance * 0.5f);
                 }
 			}
 		}
