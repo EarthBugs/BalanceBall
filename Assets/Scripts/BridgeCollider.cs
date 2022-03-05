@@ -41,7 +41,6 @@ public class BridgeCollider : MonoBehaviour
     {
         //如果碰撞物体是球，则开始工作，否则将该物体置入队列
         GameObject ball = GameObject.Find("MainNode").GetComponent<MainLogic>().ball;
-        Debug.Log(other.gameObject.name);
         if (other.gameObject == ball)
             working = true;
         else
