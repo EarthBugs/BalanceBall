@@ -1,0 +1,95 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &8608227281129029842
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 517332161531069098, guid: 203783bb4dc78bc41ba09b4a30910048, type: 3}
+      propertyPath: m_Name
+      value: StonenConvertor
+      objectReference: {fileID: 0}
+    - target: {fileID: 893470229995296784, guid: 203783bb4dc78bc41ba09b4a30910048, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 893470229995296784, guid: 203783bb4dc78bc41ba09b4a30910048, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 893470229995296784, guid: 203783bb4dc78bc41ba09b4a30910048, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.075
+      objectReference: {fileID: 0}
+    - target: {fileID: 893470229995296784, guid: 203783bb4dc78bc41ba09b4a30910048, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -5.575
+      objectReference: {fileID: 0}
+    - target: {fileID: 893470229995296784, guid: 203783bb4dc78bc41ba09b4a30910048, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 893470229995296784, guid: 203783bb4dc78bc41ba09b4a30910048, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 893470229995296784, guid: 203783bb4dc78bc41ba09b4a30910048, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 893470229995296784, guid: 203783bb4dc78bc41ba09b4a30910048, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 893470229995296784, guid: 203783bb4dc78bc41ba09b4a30910048, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 893470229995296784, guid: 203783bb4dc78bc41ba09b4a30910048, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 893470229995296784, guid: 203783bb4dc78bc41ba09b4a30910048, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 943297585658552910, guid: 203783bb4dc78bc41ba09b4a30910048, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 703e4fa8e2e981c408d23c86ee27800f, type: 2}
+    - target: {fileID: 5385772604755525506, guid: 203783bb4dc78bc41ba09b4a30910048, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 703e4fa8e2e981c408d23c86ee27800f, type: 2}
+    - target: {fileID: 7454266571041399595, guid: 203783bb4dc78bc41ba09b4a30910048, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 703e4fa8e2e981c408d23c86ee27800f, type: 2}
+    m_RemovedComponents:
+    - {fileID: 503038118, guid: 203783bb4dc78bc41ba09b4a30910048, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: 203783bb4dc78bc41ba09b4a30910048, type: 3}
+--- !u!1 &8608227280910418033 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 503038115, guid: 203783bb4dc78bc41ba09b4a30910048, type: 3}
+  m_PrefabInstance: {fileID: 8608227281129029842}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1794545102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8608227280910418033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44628f32f7eb4044eb36cca438949a59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  state: 0
+  duration: 3
+  cdTime: 3
+  lidSpeed: 0.1
+  bottomSpeed: 0.05
+  ball: {fileID: 0}

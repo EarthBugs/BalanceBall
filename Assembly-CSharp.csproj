@@ -60,6 +60,8 @@
     <Compile Include="Assets\Scripts\PaperConvertor.cs" />
     <Compile Include="Assets\Scripts\WoodenConvertor.cs" />
     <Compile Include="Assets\Scripts\BridgeCollider.cs" />
+    <Compile Include="Assets\Scripts\KillDropObject.cs" />
+    <Compile Include="Assets\Scripts\StoneConvertor.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
