@@ -27,12 +27,6 @@ public class MainLogic : MonoBehaviour
 				balls.gameObject.SetActive(true);
 	}
 
-	// Update is called once per frame
-	void Update()
-	{
-
-	}
-
 	public void SetBall(GameObject ballToChange)
 	{
 		ball = ballToChange;

@@ -8,18 +8,6 @@ public class UICollison : MonoBehaviour
 
 	UIFade uiFade;
 
-	// Start is called before the first frame update
-	void Start()
-	{
-
-	}
-
-	// Update is called once per frame
-	void Update()
-	{
-
-	}
-
 	private void OnTriggerEnter(Collider other)
 	{
 		//检查碰撞的是否是球

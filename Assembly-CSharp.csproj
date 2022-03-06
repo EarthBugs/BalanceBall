@@ -56,16 +56,16 @@
     <Compile Include="Assets\Scripts\MainLogic.cs" />
     <Compile Include="Assets\Scripts\Fan.cs" />
     <Compile Include="Assets\Scripts\AddForces.cs" />
+    <Compile Include="Assets\Scripts\EndPointCollision.cs" />
     <Compile Include="Assets\Scripts\StoneConvertor.cs" />
     <Compile Include="Assets\Scripts\UIFade.cs" />
     <Compile Include="Assets\Scripts\CameraFollow.cs" />
     <Compile Include="Assets\Scripts\KillDropObject.cs" />
+    <Compile Include="Assets\Scripts\SceneMgr.cs" />
     <Compile Include="Assets\Scripts\UICollison.cs" />
     <Compile Include="Assets\Scripts\PaperConvertor.cs" />
     <Compile Include="Assets\Scripts\WoodenConvertor.cs" />
     <Compile Include="Assets\Scripts\BridgeCollider.cs" />
-    <Compile Include="Assets\Scripts\EndPointUICollision.cs" />
-    <Compile Include="Assets\Scripts\SceneMgr.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
