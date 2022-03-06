@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class MainLogic : MonoBehaviour
 {
+	//当前是否正在显示UI
+	public bool uiIsShow = false;
 	//存储当前正在使用的球
 	public GameObject ball;
 	//设置帧率

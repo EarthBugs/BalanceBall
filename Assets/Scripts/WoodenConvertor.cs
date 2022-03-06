@@ -1,12 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System;
 
 public class WoodenConvertor : MonoBehaviour
 {
-	//工作状态，0=开盖完成正在等待球进入，1=球已进入正在工作，2=工作完成正在开盖，
-	//3=开盖完成正在升起，4=升起完成正在cd，5=cd完成正在开盖
+	//工作状态，0=开盖完成正在等待球进入，1=球已进入正在关盖，2=关盖完成正在工作，3=工作完成正在开盖，
+	//4=开盖完成正在升起，5=升起完成正在关盖，6=关盖完成正在cd，7=cd完成正在开盖
 	int state = 0;
 	//工作时长
 	public float duration = 3.0f;
@@ -25,6 +24,7 @@ public class WoodenConvertor : MonoBehaviour
 	Transform lid0;
 	Transform lid1;
 	GameObject ball;
+	GameObject collider;
 
 	// Start is called before the first frame update
 	void Start()
@@ -32,7 +32,6 @@ public class WoodenConvertor : MonoBehaviour
 		bottom = this.transform.parent.GetChild(0);
 		lid0 = this.transform.parent.GetChild(1);
 		lid1 = this.transform.parent.GetChild(2);
-		ball = GameObject.Find("MainNode").GetComponent<MainLogic>().ball;
 	}
 
 	// Update is called once per frame
@@ -47,39 +46,46 @@ public class WoodenConvertor : MonoBehaviour
 			GameObject.Find("Balls").GetComponent<AddForces>().canMove = false;
 
 			CloseLid();
+			if (lid0.localScale.x >= 0.99 && lid1.localScale.x >= 0.99)
+				state = 2;
 		}
 		//工作计时器开始计时
-		if (state == 1)
+		if (state == 2)
 		{
 			workTimer -= Time.deltaTime;
+
+			//如果掉入的物体不是球，则将其隐藏并跳到状态7
+			if (collider != ball)
+			{
+				collider.gameObject.SetActive(false);
+				state = 7;
+			}
 		}
 		//工作计时器计时结束
-		if (state == 1 && workTimer <= 0)
+		if (state == 2 && workTimer <= 0)
 		{
 			Convert();
-			state = 2;
+			state = 3;
 		}
 		//工作结束开盖
-		if (state == 2)
+		if (state == 3)
 		{
 			OpenLid();
 			if (lid0.localScale.x <= 0.01 && lid1.localScale.x <= 0.01)
-			{
-				state = 3;
-			}
+				state = 4;
 		}
 		//底部上升
-		if (state == 3)
+		if (state == 4)
 		{
 			BottomRise();
 			if (bottom.localPosition.y >= 0.44)
 			{
-				state = 4;
+				state = 5;
 				cdTimer = cdTime;
 			}
 		}
 		//cd开始关盖
-		if (state == 4)
+		if (state == 5)
 		{
 			CloseLid();
 			if (lid0.localScale.x >= 0.99 && lid1.localScale.x >= 0.99)
@@ -87,31 +93,27 @@ public class WoodenConvertor : MonoBehaviour
 				//允许用户输入
 				GameObject.Find("Balls").GetComponent<AddForces>().canMove = true;
 
-				state = 5;
+				state = 6;
 			}
 		}
 		//cd计时器开始计时
-		if (state == 5)
+		if (state == 6)
 		{
 			cdTimer -= Time.deltaTime;
 		}
 		//cd计时器计时结束
-		if (state == 5 && cdTimer <= 0)
+		if (state == 6 && cdTimer <= 0)
 		{
 			BottomDrop();
 			if (bottom.localPosition.y <= -0.55f)
-			{
-				state = 6;
-			}
+				state = 7;
 		}
 		//cd结束开盖
-		if (state == 6)
+		if (state == 7)
 		{
 			OpenLid();
 			if (lid0.localScale.x <= 0.01 && lid1.localScale.x <= 0.01)
-			{
 				state = 0;
-			}
 		}
 	}
 
@@ -122,6 +124,7 @@ public class WoodenConvertor : MonoBehaviour
 			state = 1;
 			workTimer = duration;
 			ball = GameObject.Find("MainNode").GetComponent<MainLogic>().ball;
+			collider = other.gameObject;
 		}
 	}
 

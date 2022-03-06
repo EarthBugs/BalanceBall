@@ -25,12 +25,16 @@ public class Fan : MonoBehaviour
 	//进入范围时，设置状态
 	void OnTriggerEnter(Collider other)
 	{
-		GameObject.Find("Balls").GetComponent<AddForces>().FanAffected(this.transform);
+		//检查碰撞的是否是球
+		if (other == GameObject.Find("MainNode").GetComponent<MainLogic>().ball)
+			GameObject.Find("Balls").GetComponent<AddForces>().FanAffected(this.transform);
 	}
 
 	//离开范围时，设置状态
 	private void OnTriggerExit(Collider other)
 	{
-		GameObject.Find("Balls").GetComponent<AddForces>().FanDisAffected(this.transform);
+		//检查碰撞的是否是球
+		if (other == GameObject.Find("MainNode").GetComponent<MainLogic>().ball)
+			GameObject.Find("Balls").GetComponent<AddForces>().FanDisAffected(this.transform);
 	}
 }
