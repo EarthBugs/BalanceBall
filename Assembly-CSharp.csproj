@@ -64,6 +64,8 @@
     <Compile Include="Assets\Scripts\PaperConvertor.cs" />
     <Compile Include="Assets\Scripts\WoodenConvertor.cs" />
     <Compile Include="Assets\Scripts\BridgeCollider.cs" />
+    <Compile Include="Assets\Scripts\EndPointUICollision.cs" />
+    <Compile Include="Assets\Scripts\SceneMgr.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

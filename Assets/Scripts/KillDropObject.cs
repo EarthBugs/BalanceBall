@@ -16,8 +16,13 @@ public class KillDropObject : MonoBehaviour
         
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        collision.gameObject.SetActive(false);
+        if (other.gameObject == GameObject.Find("MainNode").GetComponent<MainLogic>().ball)
+        {
+            //SceneMgr
+        }
+        else
+            other.gameObject.SetActive(false);
     }
 }

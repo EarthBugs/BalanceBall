@@ -23,7 +23,7 @@ public class UICollison : MonoBehaviour
 	private void OnTriggerEnter(Collider other)
 	{
 		//检查碰撞的是否是球
-		if (other == GameObject.Find("MainNode").GetComponent<MainLogic>().ball)
+		if (other.gameObject == GameObject.Find("MainNode").GetComponent<MainLogic>().ball)
         {
 			//查找对应id的物体
 			Transform[] transforms = GameObject.Find("UI").GetComponentsInChildren<Transform>();

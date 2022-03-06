@@ -17,7 +17,7 @@ public class UIFade : MonoBehaviour
 	//目标透明度
 	float targetAlpha = 1;
 	//透明度变化速度
-	public float alphaSpeed = 5.0f;
+	public float alphaSpeed = 2.0f;
 	//当前对象的CanvasGroup组件
 	private CanvasGroup canvasGroup;
 
@@ -44,9 +44,13 @@ public class UIFade : MonoBehaviour
 		//开始cd
 		if (state == 2)
 		{
-			timer += Time.deltaTime;
-			if (timer >= duration)
-				state = 3;
+			//时长为-1，则一直显示
+			if (duration != -1)
+            {
+				timer += Time.deltaTime;
+				if (timer >= duration)
+					state = 3;
+            }
 		}
 		//渐出
 		if (state == 3)
@@ -68,9 +72,13 @@ public class UIFade : MonoBehaviour
 	}
 	public void Hide()
 	{
-		//若被调用，则应该是物体离开了碰撞箱，应当加快渐出速度以免与下一个UI重合
-		alphaSpeed = 10;
-		state = 3;
+		//判断是否是终点，时长为-1时一般是终点，此时不隐藏
+		if (duration != -1)
+        {
+			//若被调用，则应该是物体离开了碰撞箱，应当加快渐出速度以免与下一个UI重合
+			alphaSpeed = 10;
+			state = 3;
+		}			
 	}
 
 	void FadeIn()
